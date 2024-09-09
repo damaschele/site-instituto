@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+.head {
+    padding: 20px 40px;
+    color: #000;
+}
+
+.logo h1 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: #0F45A3!important;
+}
+.logo span {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.head .icon {
+    margin-left: 10px;
+}
+
+
+/*_________________________ Header_____________________________ */
+.logo_img {
+    display: flex;
+    text-align: center;
+    padding: 5px;
+}
+.logo_img img{
+    width: 70px;
+    height: 70px;
+}
+
+
+header {
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 30px;
+    position: relative;
+}
+
+header ul {
+    padding: 30px 20px;
+}
+
+header li {
+    margin-right: 40px;
+}
+
+header ul li a {
+    color: #fff;
+    font-weight: 400;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+
+header ul li a:hover {
+    color: #0F45A3;
+}
+
+.start {
+    background-color: #0F45A3;
+    padding: 30px 70px;
+    color: #fff;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.toggle {
+    display: none;
+}
+
+@media (max-width: 1024px)  {
+    .logo_img {
+        display: flex;
+        text-align: center;
+        margin-top: 12px;
+        
+    }
+    .logo_img img{
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+    }
+
+    .logo span {
+        display: none;
+    }
+
+    .start {
+        clip-path: none;
+    }
+    
+    header {
+        margin: 0;
+        background-color: #0F45A3;
+        position: absolute;
+        left: 0;
+        width: 100%!important;
+    }
+
+
+    header ul.flexSB {
+        display: none;
+    }
+
+    header ul li {
+        margin-bottom: 20px;
+    }
+    .toggle {
+        display: block;
+        background: none;
+        color: #fff;
+        font-size: 25px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    .mobile-nav {
+        position: absolute;
+        top: 8.2vh;
+        right: 0;
+        width: 60%;
+        background-color: #0F45A3;
+        text-align: right;
+        align-self: center;
+    }
+
+    .button {
+        font-size: 14px;
+        position: absolute;
+        left: 100px;
+    }
+
+    .head {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        padding: 0;
+        width: 100%!important;
+    }
+    .head .icon {
+        margin-left: 10px;
+        width: 30px;
+        height: 30px;
+        border: none;
+        text-align: center;
+        background: none;
+    }
+}
