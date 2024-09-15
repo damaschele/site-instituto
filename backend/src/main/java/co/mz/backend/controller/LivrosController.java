@@ -120,4 +120,38 @@ public class LivrosController {
         }
     }
 
+    @GetMapping("/livro/{filename:.+}")
+public ResponseEntity<Resource> getLivro(@PathVariable String filename) {
+    Path file = Paths.get(storageLocation).resolve(filename); // Caminho do arquivo PDF
+    Resource resource;
+    
+    try {
+        resource = new UrlResource(file.toUri());
+        if (resource.exists() || resource.isReadable()) {
+            MediaType mediaType;
+            String mimeType = Files.probeContentType(file);
+            if (mimeType != null) {
+                mediaType = MediaType.parseMediaType(mimeType);
+            } else {
+                mediaType = MediaType.APPLICATION_OCTET_STREAM;
+            }
+            return ResponseEntity.ok()
+                .contentType(mediaType)
+                .body(resource);
+        } else {
+            return ResponseEntity.notFound().build(); // Arquivo não encontrado
+        }
+    } catch (MalformedURLException e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Problema com URL do arquivo
+    } catch (IOException e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Problema de I/O
+    }
+}
+
+    @GetMapping("/livros-detalhes/{codigo}")
+    public ResponseEntity<LivrosModelo> getLivroDetalhes(@PathVariable Long codigo) {
+        LivrosModelo livro = livrosService.findLivroByCodigo(codigo);
+        return livro != null ? ResponseEntity.ok(livro) : ResponseEntity.notFound().build();
+    }
+
 }

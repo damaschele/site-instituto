@@ -1,6 +1,8 @@
 import axios from 'axios';
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import Back from '../Back/Back';
 import WelcomeAlert from '../Welcome/WelcomeAlert';
 import "./livros.css";
@@ -10,6 +12,7 @@ export default function Livros() {
     const [livros, setLivros] = useState([]);
     const [categorias, setCategorias] = useState([]);
     const [pesquisa, setPesquisa] = useState('');
+    const navigate = useNavigate();
 
     // Verifica o perfil do usuário no localStorage
     const role = localStorage.getItem('role');
@@ -67,8 +70,8 @@ export default function Livros() {
                             <h2 className="text-xl font-semibold mb-4">Categorias</h2>
                             <ul>
                                 {categorias.map((categoria) => (
-                                    <li key={categoria.id} className="mb-2">
-                                        <a href={`http://localhost:8080/categoria/${categoria.id}`} className="text-blue-600 hover:underline">
+                                    <li key={categoria.id} className="mb-2 text-white mt-auto text-center p-2 hover:rounded-md hover:border hover:p-2 border-gray-300">
+                                        <a href={`http://localhost:8080/categoria/${categoria.id}`} className="text-blue-600">
                                             {categoria.nome}
                                         </a>
                                     </li>
@@ -90,12 +93,13 @@ export default function Livros() {
                                         <p className="text-gray-600 mb-4 overflow-hidden text-ellipsis text-sm line-clamp-2">
                                             {livro.descricao}
                                         </p>
-                                        <a
-                                            href={`/livros/${livro.id}`}
-                                            className="text-blue-600 hover:bg-[#0F45B1] mt-auto text-center p-2 text-white bg-[#0F45A3] border border-gray-300"
-                                        >
-                                            Ver detalhes
-                                        </a>
+                                            <button
+                                                onClick={() => navigate(`/detalhes/livros/${livro.codigo}`)}
+                                                className="text-blue-600 hover:bg-[#0F45B1] mt-auto text-center p-2 text-white cursor-pointer bg-[#0F45A3] border border-gray-300"
+                                            >
+                                                Ver detalhes
+                                            </button>
+
                                     </div>
                                 ))}
                             </div>

@@ -1,0 +1,17 @@
+@media (max-width: 1024px)  {
+    .back {
+        background-position: right;
+        padding-top: 50%;
+        height: 100vh;
+        padding: 25px 30px;
+      }
+
+      .back h2 {
+        margin-top: 15rem;
+      }
+      .back h1 {
+        font-size: 25px!important;
+      }
+  
+  }
+  

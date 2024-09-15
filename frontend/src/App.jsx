@@ -8,9 +8,11 @@ import HomeDash from './Components/dashboard/HomeDash/HomeDash';
 import LivrosDash from './Components/dashboard/LivrosDash/LivrosDash';
 import Eventos from './Components/Eventos/Eventos';
 import Layout from './Components/Layout/Layout';
+import LivroDetalhes from './Components/LivroDetalhes/LivroDetalhes';
+import VisualizarLivro from './Components/LivroDetalhes/VisualizarLivro';
 import Livros from './Components/Livros/Livros';
 import Login from './Components/Login/Login';
-import NotAuthorized from './Components/NotAuthorized/NotAuthorized'; // Página de acesso negado
+import NotAuthorized from './Components/NotAuthorized/NotAuthorized';
 import Home from './Components/pages/Home';
 import ProtectedRoute from './Components/PrivateRoute/PrivateRoute';
 import Sobre from './Components/Sobre/Sobre';
@@ -31,7 +33,25 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute
             element={<Livros />}
-            allowedRoles={['Estudante', 'admin']} // Apenas usuários com perfil de 'student' ou 'admin' podem acessar
+            allowedRoles={['Estudante', 'admin']}
+          />
+        ),
+      },
+      {
+        path: 'detalhes/livros/:codigo', // Rota dinâmica para o livro com o código
+        element: (
+          <ProtectedRoute
+            element={<LivroDetalhes />}
+            allowedRoles={['Estudante', 'admin']}
+          />
+        ),
+      },
+      {
+        path: 'visualizar-livro/:codigo', // Nova rota para visualização do livro online
+        element: (
+          <ProtectedRoute
+            element={<VisualizarLivro />} // Usa o componente de visualização do livro
+            allowedRoles={['Estudante', 'admin']}
           />
         ),
       },
@@ -44,24 +64,13 @@ const router = createBrowserRouter([
       <ProtectedRoute
         element={<Dashboard />}
         allowedRoles={['admin']}
-        
       />
     ),
     children: [
-      { 
-        index: true, 
-        element: <HomeDash /> },
-        { 
-          path: 'homeDash',
-          element: <HomeDash /> },
-      {
-        path: 'cursosDash',
-        element: <CursosDash />,
-      },
-      {
-        path: 'livrosDash',
-        element: <LivrosDash />,
-      },
+      { index: true, element: <HomeDash /> },
+      { path: 'homeDash', element: <HomeDash /> },
+      { path: 'cursosDash', element: <CursosDash /> },
+      { path: 'livrosDash', element: <LivrosDash /> },
     ],
   },
   { path: '/not-authorized', element: <NotAuthorized /> },

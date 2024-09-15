@@ -1,1 +1,29 @@
 /* Contactos.css */
+@media (max-width: 1024px)  {
+.content-contact {
+    display: flex;
+    padding: 0 0px!important;
+    max-width: 600px!important;
+    width: 100%;
+    margin-top: 25rem!important;
+}
+
+.content-contact-inf {
+    display: flex;
+    max-width: 600px!important;
+    width: 100%!important;
+}
+
+.content-contact-inf h2 {
+    font-size: 17px;
+    font-weight: 500;
+
+}
+
+.contact-form {
+    width: 100%!important;
+    margin-top: 15px;
+    padding: 0 0!important;
+}
+
+}

@@ -25,9 +25,9 @@ export default function CardsCursos() {
   ];
 
   return (
-    <div className="cards-slider-container">
+    <div className="cards-slider-container w-full">
       <button className="scroll-button left" onClick={scrollLeft}>←</button>
-      <div className="cards-slider" ref={sliderRef}>
+      <div className="cards-slider w-full" ref={sliderRef}>
         {cursos.map((curso) => (
           <div key={curso.id} className="card">
             <img src={curso.img} alt={curso.titulo} className="card-image" />

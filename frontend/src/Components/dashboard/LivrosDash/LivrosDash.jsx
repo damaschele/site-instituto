@@ -1,4 +1,5 @@
 import axios from 'axios';
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import { FaBook, FaPlus } from 'react-icons/fa';
 import LivrosTable from './LivrosTable';
@@ -30,7 +31,7 @@ export default function LivrosDash() {
       const response = await axios.get('http://localhost:8080/api/livros');
       setLivros(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
-      console.error('Erro ao carregar livros', error);
+      console.error("Erro ao carregar livros", error);
     }
   };
 
@@ -39,11 +40,12 @@ export default function LivrosDash() {
       const response = await axios.get('http://localhost:8080/api/categorias');
       setCategorias(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
-      console.error('Erro ao carregar categorias', error);
+      console.error("Erro ao carregar categorias", error);
     }
   };
 
   const handleRegistrarLivro = async () => {
+    // Validação dos campos
     if (!novoLivro.titulo || !novoLivro.descricao || !novoLivro.foto || !novoLivro.livro || !novoLivro.categoriaId) {
       setLivroError('Todos os campos são obrigatórios.');
       return;
@@ -72,8 +74,9 @@ export default function LivrosDash() {
         categoriaId: '',
       });
       setLivroError('');
-      setSucesso('Livro registrado com sucesso!');
-      setTimeout(() => setSucesso(''), 3000);
+      setSucesso('Livro registrado com sucesso!'); // Mensagem de sucesso
+      setTimeout(() => setSucesso(''), 3000); 
+    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setLivroError('Erro ao cadastrar');
     }
@@ -91,32 +94,11 @@ export default function LivrosDash() {
       setShowCategoriaModal(false);
       setNovaCategoria({ nome: '' });
       setCategoriaError('');
-      setSucesso('Categoria registrada com sucesso!');
-      setTimeout(() => setSucesso(''), 3000);
+      setSucesso('Categoria registrada com sucesso!'); 
+      setTimeout(() => setSucesso(''), 3000); 
+      // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setCategoriaError('Erro ao cadastrar');
-    }
-  };
-
-  const handleRemoverLivro = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8080/api/livros/${id}`);
-      carregarLivros();
-      setSucesso('Livro removido com sucesso!');
-      setTimeout(() => setSucesso(''), 3000);
-    } catch (error) {
-      console.error('Erro ao remover livro', error);
-    }
-  };
-
-  const handleRemoverCategoria = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8080/api/categorias/${id}`);
-      carregarCategorias();
-      setSucesso('Categoria removida com sucesso!');
-      setTimeout(() => setSucesso(''), 3000);
-    } catch (error) {
-      console.error('Erro ao remover categoria', error);
     }
   };
 
@@ -131,7 +113,7 @@ export default function LivrosDash() {
 
       <div className="grid grid-cols-3 gap-4">
         {/* Widget 1: Quantidade de Livros */}
-        <div className="p-4 bg-white shadow-lg rounded-sm flex items-center mb-5">
+        <div className="p-4 bg-white shadow-lg rounded-sm flex items-center mb-5" style={{ boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.1)', marginBottom: '20px' }}>
           <FaBook className="text-3xl text-blue-500" />
           <div className="ml-4">
             <h3 className="text-lg font-semibold">Total de Livros</h3>
@@ -140,24 +122,26 @@ export default function LivrosDash() {
         </div>
 
         {/* Widget 2: Registrar Livro */}
-        <div className="p-4 bg-white shadow-lg rounded-sm relative mb-5">
+        <div className="p-4 bg-white shadow-lg rounded-sm relative mb-5" style={{ boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.1)', marginBottom: '20px' }}>
           <h3 className="text-lg font-semibold">Registrar Livro</h3>
           <p className="text-sm text-gray-600">Adicione novos livros ao catálogo.</p>
-          <FaPlus className="absolute top-2 right-2 cursor-pointer text-blue-500" onClick={() => setShowLivroModal(true)} />
+          <FaPlus 
+            className="absolute top-2 right-2 cursor-pointer text-blue-500" 
+            onClick={() => setShowLivroModal(true)} 
+          />
         </div>
 
         {/* Widget 3: Registrar Categoria */}
-        <div className="p-4 bg-white shadow-lg rounded-sm relative mb-5">
+        <div className="p-4 bg-white shadow-lg rounded-sm relative mb-5" style={{ boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.1)', marginBottom: '20px' }}>
           <h3 className="text-lg font-semibold">Registrar Categoria</h3>
           <p className="text-sm text-gray-600">Adicione novas categorias de livros.</p>
-          <FaPlus className="absolute top-2 right-2 cursor-pointer text-blue-500" onClick={() => setShowCategoriaModal(true)} />
+          <FaPlus 
+            className="absolute top-2 right-2 cursor-pointer text-blue-500" 
+            onClick={() => setShowCategoriaModal(true)} 
+          />
         </div>
       </div>
-      <LivrosTable 
-        livros={livros} 
-        removerLivro={handleRemoverLivro} 
-        removerCategoria={handleRemoverCategoria}
-      />
+      <LivrosTable />
       {/* Modal de Registrar Livro */}
       {showLivroModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">

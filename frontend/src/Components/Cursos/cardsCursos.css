@@ -85,21 +85,37 @@
   }
   
   .cards-slider::-webkit-scrollbar {
-    display: none; /* Esconde a barra de rolagem */
+    display: none;
   }
   
   @media (max-width: 1200px) {
+    
+    .cards-slider-container{
+      position: absolute;
+      left: 0;
+      max-width: 480px!important;
+      width: 100%;
+    }
     .cards-slider {
       justify-content: center;
+      max-width: 480px!important;
+      width: 100%;
     }
     .card {
-        width: 200px;
+        width: 250px;
+    }
+    .scroll-button.left {
+      left: 5px;
+    }
+    
+    .scroll-button.right {
+      right: 5px;
     }
   }
   
   @media (min-width: 1201px) {
     .cards-slider {
-      width: calc(280px * 4 + 50px * 3); /* Exibe 4 cards de uma vez */
+      width: calc(250px * 4 + 50px * 3); /* Exibe 4 cards de uma vez */
     }
   }
   

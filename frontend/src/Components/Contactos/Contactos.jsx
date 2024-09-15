@@ -9,8 +9,8 @@ export default function Contactos() {
   return (
     <div className="mb-10">
       <Back title="Contactos" />
-      <div className="container mx-auto px-4 md:px-8 mt-[-15rem] border-left-[1px solid]">
-        <div className="bg-white p-6 rounded-sm shadow-md">
+      <div className="container content-contact mx-auto px-4 md:px-8 mt-[-15rem] border-left-[1px solid]">
+        <div className="bg-white p-6 rounded-sm content-contact-inf shadow-md">
           <div className="flex flex-col md:flex-row">
             
             {/* Lista de Contatos */}
@@ -47,7 +47,7 @@ export default function Contactos() {
             </div>
             
             {/* Formulário de Contato */}
-            <div className="w-full md:w-1/2 pl-4">
+            <div className="w-full md:w-1/2 pl-4 contact-form">
               <h2 className="text-3xl font-smbold mb-4">Entre em Contato</h2>
               <form action="#" method="POST" className="space-y-4">
                 <div>

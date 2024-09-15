@@ -11,6 +11,7 @@ const LivrosTable = () => {
     const [error, setError] = useState(null);
     const [selectedLivro, setSelectedLivro] = useState(null);
     const [showEditModal, setShowEditModal] = useState(false);
+    const [sucesso, setSucesso] = useState('');
 
     // Função para buscar a lista de livros
     const fetchLivros = async () => {
@@ -25,14 +26,16 @@ const LivrosTable = () => {
     };
 
     // Função para remover livro
-    const handleRemover = async (id) => {
-        if (window.confirm('Tem certeza que deseja remover este livro?')) {
-            try {
-                await axios.delete(`http://localhost:8080/api/livros/${id}`);
-                fetchLivros(); // Atualiza a lista de livros após a remoção
-            } catch (err) {
-                alert('Erro ao remover o livro');
-            }
+    const handleRemoverLivro = async (id) => {
+        if (!window.confirm('Tem certeza que deseja remover este livro?')) return;
+    
+        try {
+          await axios.delete(`http://localhost:8080/api/livros/${id}`);
+          setLivros((prevLivros) => prevLivros.filter((livro) => livro.id !== id));
+          setSucesso('Livro removido com sucesso!');
+          console.log("Livro removido, ID:", id);
+        } catch (error) {
+          console.error('Erro ao remover livro', error);
         }
     };
 
@@ -70,9 +73,8 @@ const LivrosTable = () => {
                 </thead>
                 <tbody>
                     {livros.map((livro) => (
-                        
                         <tr key={livro.id}>
-                            <td className="border px-4 py-2">{livro.id}</td>
+                            <td className="border px-4 py-2">{livro.codigo}</td>
                             <td className="border px-4 py-2">{livro.titulo}</td>
                             <td className="border px-4 py-2">{livro.descricao}</td>
                             <td className="border px-4 py-2">{livro.categoria ? livro.categoria.nome : 'N/A'}</td>
@@ -80,9 +82,7 @@ const LivrosTable = () => {
                                 {livro.foto ? (
                                     <img src={`http://localhost:8080/api/livros/foto/${livro.foto}`} alt={livro.foto} width="50" />
                                 ) : (
-                                    <>
                                     <p>{livro.foto}</p>
-                                    </>
                                 )}
                             </td>
                             <td className="border px-4 py-2">
@@ -94,7 +94,7 @@ const LivrosTable = () => {
                                 </button>
                                 <button
                                     className="bg-red-500 hover:bg-red-700 h-[35px] w-[35px] text-white font-bold py-1 px-2 rounded"
-                                    onClick={() => handleRemover(livro.id)}
+                                    onClick={() => handleRemoverLivro(livro.codigo)}
                                 >
                                    <MdDelete />
                                 </button>

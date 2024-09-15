@@ -29,3 +29,15 @@
 .marigin {
     margin-top: 40.3%;
 }
+
+
+@media (max-width: 1024px)  {
+    .cardscursos{
+        display: flex;
+        max-height: 100vh;
+        height: 100%;
+        margin-top: 20rem;
+        margin-bottom: 34rem!important;
+    }
+  }
+  

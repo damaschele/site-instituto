@@ -17,13 +17,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div className='home-content'>
       <Hero />
-      <div className={`cards container ${animate ? 'animate' : ''}`}>
+      <div className={`cards w-full container ${animate ? 'animate' : ''}`}>
         <CardSobre />
       </div>
-      <div className="cardscursos conatiner">
-        <Titlo title="CURSOS LECIONADOS" />
+      <div className="cardscursos container">
+        <div className="h1">
+        <Titlo title="CURSOS LECIONADOS"/>
+        </div>
         <CardsCursos />
       </div>
     </div>

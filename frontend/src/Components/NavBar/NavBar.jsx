@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
+import { IoCloseOutline } from 'react-icons/io5';
+import { TbMenuDeep } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/logo.png";
 import "../NavBar/Navbar.css";
@@ -37,7 +39,7 @@ export default function NavBar() {
                         <div className="button"><Link to="/login">ENTRAR NA BIBLIOTECA</Link></div>
                     </div>
                     <button className='toggle' onClick={() => setClick(!click)}>
-                        { click ? <i className='fa fa-times'></i> : <i className='fa fa-bars'></i>}
+                        { click ? <IoCloseOutline /> : <TbMenuDeep /> }
                     </button>
                 </nav>
             </header>

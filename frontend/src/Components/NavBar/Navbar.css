@@ -114,7 +114,7 @@ header ul li a:hover {
         font-size: 25px;
         position: absolute;
         right: 20px;
-        top: 20px;
+        top: 24px;
     }
 
     .mobile-nav {
@@ -125,6 +125,7 @@ header ul li a:hover {
         background-color: #0F45A3;
         text-align: right;
         align-self: center;
+        z-index: 69;
     }
 
     .button {

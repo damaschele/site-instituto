@@ -102,4 +102,8 @@ public class LivrosService {
     System.out.println("Foto: "+fileUrl);
     return fileUrl;
     }
+
+    public LivrosModelo findLivroByCodigo(Long codigo) {
+        return livrosRepository.findByCodigo(codigo);
+    }
 }

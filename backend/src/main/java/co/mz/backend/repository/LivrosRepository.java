@@ -11,4 +11,5 @@ import co.mz.backend.model.LivrosModelo;
 @Repository
 public interface LivrosRepository extends JpaRepository<LivrosModelo, Long> {
     List<LivrosModelo> findByCategoria(CategoriaModel categoria);
+    LivrosModelo findByCodigo(Long codigo);
 }

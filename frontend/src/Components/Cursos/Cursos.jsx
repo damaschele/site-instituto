@@ -7,7 +7,9 @@ export default function Cursos() {
   return (
     <>
         <Back title="CURSOS LECIONADOS" />
+        <div className="cardscursos container">
         <CardsCursos />
+      </div>
     </>
   )
 }

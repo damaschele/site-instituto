@@ -15,4 +15,29 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  @media (max-width: 1024px)  {
+    .cards{
+      margin-top: 20rem;
+      display: flex;
+      max-width: 450px!important;
+      width: 100%;
+    }
+
+    .home-content .cardscursos{
+      margin-bottom: 15rem;
+      padding: 2px 0;
+      margin-top: 4rem;
+    }
+
+    .home-content .cardscursos .h1 {
+      margin-top: -8rem!important;
+      font-size: 25px!important;
+      display: flex;
+    }
+
+    .home-content .cardscursos .h1 h1 {
+      font-size: 25px!important;
+    }
+  }
   
